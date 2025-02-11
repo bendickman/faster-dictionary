@@ -7,7 +7,7 @@ namespace FasterDictionary.Client.Benchmarks;
 [SimpleJob(runtimeMoniker: RuntimeMoniker.Net80)]
 public class DictionaryBenchmarks
 {
-    [Benchmark]
+    [Benchmark(Baseline = true)]
     public int StandardDictionaryGetNewValue()
     {
         var dictionary = new Dictionary<string, int>();
@@ -55,8 +55,6 @@ public class DictionaryBenchmarks
         return dictionary.GetOrAdd("1", 1);
     }
 
-    /////////////////////////////////////
-    ///
     [Benchmark]
     public bool StandardDictionaryUpdateNewValue()
     {
